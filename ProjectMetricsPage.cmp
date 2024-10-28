@@ -1,0 +1,44 @@
+<apex:page controller="FreelancerProfileController">
+    <style>
+        .custom-page-block {
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px;
+        }
+        .metric-header {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #0070d2; /* Salesforce Blue */
+            margin-bottom: 10px;
+        }
+        .metric-value {
+            font-size: 2em;
+            color: #28a745; /* Green for completion */
+            font-weight: bold;
+        }
+        .metric-details {
+            font-size: 1.1em;
+            color: #555;
+            margin-top: 10px;
+        }
+    </style>
+    
+    <apex:form >
+        <apex:pageBlock title="Project Metrics" id="projectMetricsBlock">
+            <div class="custom-page-block">
+                <apex:pageBlockSection >
+                    <div class="metric-header">Project Completion:</div>
+                    <div class="metric-value">{!projectCompletion}%</div>
+                </apex:pageBlockSection>
+
+                <apex:pageBlockSection >
+                    <div class="metric-header">Metrics Details:</div>
+                    <div class="metric-details">{!metricDetails}</div>
+                </apex:pageBlockSection>
+            </div>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
