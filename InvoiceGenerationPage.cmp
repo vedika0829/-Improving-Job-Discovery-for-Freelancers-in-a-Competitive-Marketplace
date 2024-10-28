@@ -1,0 +1,72 @@
+<apex:page controller="InvoiceController">
+    <apex:form >
+        <div class="invoice-container">
+            <apex:pageBlock title="Generate Invoice">
+                <apex:pageBlockSection >
+                    <apex:outputLabel value="Select Project:" for="projectSelect" styleClass="label"/>
+                    <apex:selectList value="{!selectedProjectId}" size="1" id="projectSelect">
+                        <apex:selectOptions value="{!projects}"/>
+                    </apex:selectList>
+
+                    <apex:outputLabel value="Invoice Amount:" for="amountInput" styleClass="label"/>
+                    <apex:inputText value="{!invoiceAmount}" id="amountInput" required="true" />
+
+                    <apex:commandButton action="{!generateInvoice}" value="Generate Invoice" styleClass="button"/>
+                </apex:pageBlockSection>
+                <apex:pageBlockSection >
+                    <apex:outputPanel rendered="{!isInvoiceGenerated}" styleClass="message-panel">
+                        <apex:outputText value="Invoice generated successfully!" styleClass="successMessage"/>
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!NOT(isInvoiceGenerated)}">
+                        <apex:outputText value="No invoice has been generated yet." styleClass="errorMessage"/>
+                    </apex:outputPanel>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+        </div>
+    </apex:form>
+
+    <style>
+        .invoice-container {
+            margin: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .button {
+            background-color: #0070d2;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #005fb2;
+        }
+
+        .message-panel {
+            margin-top: 15px;
+        }
+
+        .successMessage {
+            color: green;
+            font-weight: bold;
+        }
+
+        .errorMessage {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</apex:page>
+                                      
